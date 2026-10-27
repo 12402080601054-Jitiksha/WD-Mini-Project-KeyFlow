@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KeyFlow | Typing Test</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="focus-container">
+
+        <header class="focus-header">
+            <a href="index.html" class="logo">KeyFlow</a>
+            <div class="timer">
+                <span class="timer-dot"></span>
+                <span id="time">60</span>s
+            </div>
+        </header>
+
+        <section class="focus-card">
+            <div class="paragraph"
+                 id="paragraph"
+                 tabindex="0"
+                 role="textbox"
+                 aria-label="typing test paragraph"
+                 aria-multiline="false"
+                 spellcheck="false"></div>
+
+            <div class="focus-footer">
+                <span id="status">click the paragraph and start typing</span>
+                <button id="restart" type="button" title="New paragraph">
+                    ↻ new paragraph
+                </button>
+            </div>
+        </section>
+
+        <!-- Hidden elements retained for compatibility with script.js -->
+        <div hidden>
+            <span id="wpm">0</span>
+            <span id="accuracy">100%</span>
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KeyFlow | Your Results</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="container">
+        <header class="header">
+            <div class="logo">⌨️ KeyFlow</div>
+            <p>every word is progress</p>
+        </header>
+
+        <section class="result-card">
+            <div class="result-icon">✨</div>
+            <h1 id="resultTitle">test complete</h1>
+            <p id="resultMessage">here is how you did</p>
+
+            <div class="main-result">
+                <span>your typing speed</span>
+                <div><strong id="finalWpm">0</strong> <span>wpm</span></div>
+            </div>
+
+            <div class="result-stats">
+                <div class="result-stat">
+                    <span>accuracy</span>
+                    <h2 id="finalAccuracy">100%</h2>
+                </div>
+                <div class="result-stat">
+                    <span>correct characters</span>
+                    <h2 id="finalCorrect">0</h2>
+                </div>
+                <div class="result-stat">
+                    <span>total characters</span>
+                    <h2 id="finalTyped">0</h2>
+                </div>
+            </div>
+
+            <button id="tryAgain" class="primary-button">
+                ↻ try another paragraph
+            </button>
+
+            <p class="result-note">
+                keep practising and watch your progress grow
+            </p>
+        </section>
+
+        <footer>made for your focus powered by your progress</footer>
+    </main>
+
+    <script>
+        const result = JSON.parse(
+            sessionStorage.getItem("typeGlowResult") || "null"
+        );
+
+        if (!result) {
+            document.getElementById("resultTitle").textContent =
+                "no test results yet";
+            document.getElementById("resultMessage").textContent =
+                "complete a typing test to see your results";
+            document.getElementById("finalWpm").textContent = "0";
+            document.getElementById("finalAccuracy").textContent = "0%";
+            document.getElementById("finalCorrect").textContent = "0";
+            document.getElementById("finalTyped").textContent = "0";
+        } else {
+            document.getElementById("resultTitle").textContent =
+                result.completed ? "paragraph completed" : "time is up";
+
+            document.getElementById("resultMessage").textContent =
+                result.completed
+                    ? "wonderful work you finished the paragraph"
+                    : "nice effort here is your final score";
+
+            document.getElementById("finalWpm").textContent = result.wpm;
+            document.getElementById("finalAccuracy").textContent =
+                result.accuracy + "%";
+            document.getElementById("finalCorrect").textContent =
+                result.correct;
+            document.getElementById("finalTyped").textContent =
+                result.typed;
+        }
+
+        document.getElementById("tryAgain").addEventListener("click", () => {
+            window.location.href = "index.html";
+        });
+    </script>
+</body>
+</html>
